@@ -7,7 +7,7 @@ export default function UnderDevelopment() {
         <Robot />
 
         <h1 className="title">
-          Sedang dibangun<span className="cursor">_</span>
+          Sedang dibangun<span className="caret">_</span>
         </h1>
 
         <p className="subtitle">

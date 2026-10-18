@@ -1,103 +1,61 @@
+function Sparkle({ x, y, s, delay }) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      <path
+        className="twinkle"
+        style={{ animationDelay: delay }}
+        d="M0 -7 L1.8 -1.8 L7 0 L1.8 1.8 L0 7 L-1.8 1.8 L-7 0 L-1.8 -1.8 Z"
+        fill="var(--accent)"
+      />
+    </g>
+  )
+}
+
+function Bot() {
+  return (
+    <svg viewBox="0 0 220 220" fill="none" aria-hidden="true">
+      <Sparkle x={38} y={64} s={1} delay="0s" />
+      <Sparkle x={186} y={54} s={0.75} delay="0.9s" />
+      <Sparkle x={172} y={122} s={0.55} delay="1.7s" />
+
+      <g className="tilt">
+        {/* antenna */}
+        <line x1="110" y1="50" x2="110" y2="32" stroke="var(--primary)" strokeWidth="5" strokeLinecap="round" />
+        <circle className="pulse" cx="110" cy="24" r="8" fill="var(--accent)" />
+
+        {/* head */}
+        <rect x="50" y="48" width="120" height="96" rx="32" fill="var(--primary)" />
+        <rect x="66" y="66" width="88" height="58" rx="22" fill="var(--card)" />
+
+        {/* face */}
+        <circle className="blink" cx="92" cy="92" r="7" fill="var(--primary)" />
+        <circle className="blink" cx="128" cy="92" r="7" fill="var(--primary)" />
+        <path d="M96 108 q14 12 28 0" stroke="var(--primary)" strokeWidth="5" strokeLinecap="round" fill="none" />
+        <circle cx="76" cy="104" r="5" fill="var(--accent)" opacity="0.45" />
+        <circle cx="144" cy="104" r="5" fill="var(--accent)" opacity="0.45" />
+      </g>
+
+      {/* body */}
+      <rect x="78" y="150" width="64" height="30" rx="15" fill="var(--primary)" opacity="0.9" />
+
+      {/* waving arm */}
+      <g className="wave">
+        <rect x="146" y="152" width="26" height="10" rx="5" fill="var(--primary)" />
+        <circle cx="180" cy="152" r="9" fill="var(--accent)" />
+      </g>
+
+      {/* ground shadow */}
+      <ellipse className="shadow-bob" cx="110" cy="200" rx="52" ry="8" fill="var(--primary)" />
+    </svg>
+  )
+}
+
 export default function Robot() {
   return (
     <div className="robot-stage">
-      <svg
-        className="robot"
-        viewBox="0 0 320 330"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="Ilustrasi robot"
-      >
-        {/* sparkle kiri atas */}
-        <path
-          className="sparkle sparkle-1"
-          d="M62 96 L66 106 L76 110 L66 114 L62 124 L58 114 L48 110 L58 106 Z"
-          fill="#5ad2ff"
-        />
-        {/* silang kanan atas */}
-        <path
-          className="sparkle sparkle-2"
-          d="M243 88 L258 103 M258 88 L243 103"
-          stroke="#2ea8f2"
-          strokeWidth="7"
-          strokeLinecap="round"
-        />
-
-        {/* antena */}
-        <g className="antenna">
-          <line
-            x1="160"
-            y1="145"
-            x2="160"
-            y2="66"
-            stroke="#2f7cf6"
-            strokeWidth="7"
-            strokeLinecap="round"
-          />
-          <circle cx="160" cy="55" r="14" fill="#5ad2ff" />
-        </g>
-
-        {/* kepala */}
-        <g className="head">
-          <rect
-            x="75"
-            y="70"
-            width="170"
-            height="150"
-            rx="52"
-            fill="#2f7cf6"
-          />
-          {/* wajah */}
-          <rect
-            x="99"
-            y="98"
-            width="122"
-            height="94"
-            rx="42"
-            fill="#ffffff"
-          />
-          {/* mata */}
-          <g className="eyes">
-            <circle cx="136" cy="138" r="13" fill="#173a72" />
-            <circle cx="184" cy="138" r="13" fill="#173a72" />
-          </g>
-          {/* pipi */}
-          <circle cx="117" cy="158" r="9" fill="#5ad2ff" />
-          <circle cx="203" cy="158" r="9" fill="#5ad2ff" />
-          {/* senyum */}
-          <path
-            d="M138 162 Q160 184 182 162"
-            fill="none"
-            stroke="#173a72"
-            strokeWidth="8"
-            strokeLinecap="round"
-          />
-        </g>
-
-        {/* badan */}
-        <rect
-          x="112"
-          y="232"
-          width="96"
-          height="58"
-          rx="28"
-          fill="#2f7cf6"
-        />
-
-        {/* tangan kanan */}
-        <g className="arm">
-          <line
-            x1="205"
-            y1="248"
-            x2="248"
-            y2="222"
-            stroke="#2f7cf6"
-            strokeWidth="13"
-            strokeLinecap="round"
-          />
-          <circle cx="256" cy="216" r="15" fill="#5ad2ff" />
-        </g>
-
-      </svg>
+      <div className="float">
+        <Bot />
+      </div>
     </div>
   )
 }
